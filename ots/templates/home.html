@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+
+{% block title %}
+    Pariksha-Candidate Home Page
+{% endblock %}
+
+
+{% block top %}
+    <div class="top-link">
+        
+        <a href="{%url 'ots:logout' %}">Logout</a>
+
+    </div>
+   
+{% endblock %}
+
+{% block content %}
+<h1>Welcome <span class="special">{{request.session.name}}</span> , to your home page</h1>
+{% for i in num %}
+    <div class="button-link">
+        <a href="{% url 'ots:testpaper' %}?n={{i}}">Test Of {{i}} Question</a>
+
+    </div>
+
+{% endfor %}
+    
+    <div class="b-link">
+        <a href="{% url 'ots:testHistory' %}">Test History</a>
+    </div>
+{% endblock %}

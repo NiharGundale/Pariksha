@@ -1,0 +1,39 @@
+{% extends "main.html" %}
+
+{% block title %}
+Pariksha-Login Form
+{% endblock %}
+
+{% block top %}
+<a href="{%url 'ots:registrationform' %}">SignUp </a>
+
+{% endblock %}
+
+{% block content %}
+<h1 >Login Form</h1>
+    <div class="all-forms">
+        {% if loginError %}
+            <div id="error">
+                {{ loginError }}
+            </div>
+        {% endif %}
+        <form action="{% url 'ots:login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-unit">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div> 
+            <div class="form-unit">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-unit">
+                <button type="submit">Login</button>
+                <button type="reset">Reset</button>
+            </div>
+            
+        </form>
+        <h4>New User ? <a href="{%url 'ots:registrationform' %}">SignUp </a> </h4>
+    </div>
+
+{% endblock %}

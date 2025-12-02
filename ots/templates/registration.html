@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block title %}
+Pariksha-Registration status
+{% endblock %}
+
+{% block top %}
+<a href="{%url 'ots:registrationform' %}">SignUp </a>
+<a href="{%url 'ots:login' %}">Login</a>
+{% endblock %}
+
+{% block content %}
+    {% if userstatus == 1 %}
+     <div class="usersatus">
+        <h2>Sorry, Username Already Exists </h2>
+        <a href="{%url 'ots:registrationform' %}">SignUp Again</a>
+     </div>
+    {% elif userstatus == 2 %}
+        <div class="usersatus">
+            <h2>Congrats!!, User Created </h2>
+            <a href="{%url 'ots:login' %}">Login</a>
+        </div>
+    {% elif userstatus == 3 %}
+        <div class="usersatus">
+             <h2>OPPS, Improper Request </h2>
+            <a href="{%url 'ots:registrationform' %}">SignUp Again</a>
+        </div>
+       
+    {% endif %}
+
+{% endblock %}
